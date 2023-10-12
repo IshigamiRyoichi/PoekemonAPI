@@ -53,7 +53,7 @@ $ docker stop pokemon-mysql bash
 $ docker start pokemon-mysql
 ```
 
-## pokemon_database > pokemon_status
+### pokemon_database > pokemon_status
 
 |colum|type|supplement|
 |---|---|---|
@@ -69,7 +69,7 @@ $ docker start pokemon-mysql
 |s|integer|素早さ|
 |ando|bool|削除したかのFlag(Falseだと削除されている)|
 
-## pokemon_database > pokemon_learn_waza
+### pokemon_database > pokemon_learn_waza
 
 |colum|type|supplement|
 |---|---|---|
@@ -81,7 +81,7 @@ $ docker start pokemon-mysql
 |waza_num|integer|覚えるLvや技マシーンの番号|
 |ando|bool|削除したかのFlag(Falseだと削除されている)|
 
-## pokemon_database > pokemon_waza_info
+### pokemon_database > pokemon_waza_info
 
 |colum|type|supplement|
 |---|---|---|
