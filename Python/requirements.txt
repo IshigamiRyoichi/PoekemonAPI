@@ -1,0 +1,9 @@
+bs4==0.0.1
+fastapi==0.103.1
+numpy==1.23.2
+pandas==1.4.4
+requests==2.29.0
+uvicorn==0.23.2
+mysql-connector-python==8.1.0
+pandas==1.4.4
+lxml==4.9.1

@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  # MySQL
+  db:
+    build:
+      context: .
+      dockerfile: ./MySQL/Dockerfile
+    container_name: pokemon-mysql3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: pokemon_database
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    # ports:
+    #   - 13306:3306
+    # - target: 3306
+    #   published: 13306
+    #   protocol: tcp
+    #   mode: host
+  # Python
+  app:  
+    build:
+      context: .
+      dockerfile: ./Python/Dockerfile
+    image: pokemon-python:1.1
+    container_name: pokemon-server
+    ports:
+      - 8080:8000
