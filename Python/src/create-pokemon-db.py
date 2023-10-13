@@ -18,7 +18,7 @@ def create_tables(cnx):
     cursor = cnx.cursor()
     create_cmd = '''
         CREATE TABLE pokemon_database.pokemon_status (
-            pokemon_id integer primary key,
+            pokemon_id char(10) primary key,
             pokemon_name char(25),
             type1 char(10),
             type2 char(10),
@@ -35,7 +35,7 @@ def create_tables(cnx):
     create_cmd = '''
         CREATE TABLE pokemon_database.pokemon_learn_waza (
             id integer auto_increment primary key,
-            pokemon_id integer,
+            pokemon_id char(10),
             pokemon_name char(25),
             waza_name char(25),
             waza_how char(2),
