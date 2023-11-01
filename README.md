@@ -4,8 +4,7 @@
 
 * build
 ```shell
-$ docker compose build
-$ docker compose up -d
+$ docker compose up --build
 ```
 
 * コンテナの停止は`Ctrl` + `D`
