@@ -10,6 +10,7 @@ RUN /usr/local/bin/python -m pip install --upgrade pip
 WORKDIR /app
 
 COPY ./Python/src/ /app/
+COPY ./Python/assets/ .
 COPY ./Python/requirements.txt .
 
 RUN python3 -m pip install -r requirements.txt
