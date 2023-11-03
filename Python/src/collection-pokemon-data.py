@@ -86,7 +86,7 @@ def get_pokemon_info(pokemon_url :str):
     print("====pokemon ID====")
     print(pokemon_id)
     headers = {"User-Agent": "hoge"}
-    res_race = requests.get(pokemon_url, timeout=5, headers=headers)
+    res_race = requests.get(pokemon_url, timeout=10, headers=headers)
     # エラーチェック
     res_race.raise_for_status()
     soup_race = bs4.BeautifulSoup(res_race.content, "lxml")
