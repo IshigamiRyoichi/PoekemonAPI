@@ -25,4 +25,4 @@ services:
     image: pokemon-python:1.1
     container_name: pokemon-server
     ports:
-      - 8080:8000
+      - 8080:8080

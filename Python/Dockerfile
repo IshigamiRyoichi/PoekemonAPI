@@ -14,4 +14,4 @@ COPY ./Python/assets/ .
 COPY ./Python/requirements.txt .
 
 RUN python3 -m pip install -r requirements.txt
-CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8080"]
