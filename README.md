@@ -11,19 +11,24 @@ $ docker compose up --build
 
 ## 実行
 
+* Pythonのコンテナに移動
+```shell
+$ docker exec -it pokemon-server bash
+```
+
 * DBの作成
 ```shell
-$ sudo docker compose run app python3 create-pokemon-db.py
+$ python3 create-pokemon-db.py
 ```
 
 * データ収集
 ```shell
-$ sudo docker compose run app python3 collection-pokemon-data.py
+$ python3 collection-pokemon-data.py
 ```
 
-* APIの起動
+* APIの起動(build時に自動実行される)
 ```shell
-$ sudo docker compose run app
+$ uvicorn main:app --reload 
 ```
 
 * http://127.0.0.1:8080/items/5?q=somequery でJSONレスポンスを確認可能
@@ -52,11 +57,11 @@ $ docker stop pokemon-mysql bash
 $ docker start pokemon-mysql
 ```
 
-## pokemon_database > pokemon_status
+### pokemon_database > pokemon_status
 
 |colum|type|supplement|
 |---|---|---|
-|pokemon_id|integer primary key|図鑑番号 主キー|
+|pokemon_id|char(10) primary key|図鑑番号 主キー|
 |pokemon_name|char(25)|ポケモンの名前|
 |type1|char(10)|ポケモンのタイプ|
 |type1|char(10)|ポケモンのタイプ|
@@ -68,19 +73,19 @@ $ docker start pokemon-mysql
 |s|integer|素早さ|
 |ando|bool|削除したかのFlag(Falseだと削除されている)|
 
-## pokemon_database > pokemon_learn_waza
+### pokemon_database > pokemon_learn_waza
 
 |colum|type|supplement|
 |---|---|---|
 |id|integer auto_increment primary key|主キー|
-|pokemon_id|integer|図鑑番号|
+|pokemon_id|char(10)|図鑑番号|
 |pokemon_name|char(25)|ポケモンの名前|
 |waza_name|char(25)|技名|
 |waza_how|char(2)|lv(レベル技), wm(技マシーン), eg(たまご技)|
 |waza_num|integer|覚えるLvや技マシーンの番号|
 |ando|bool|削除したかのFlag(Falseだと削除されている)|
 
-## pokemon_database > pokemon_waza_info
+### pokemon_database > pokemon_waza_info
 
 |colum|type|supplement|
 |---|---|---|
