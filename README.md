@@ -44,7 +44,7 @@ $ docker exec -it pokemon-mysql3.0 bash
 
 * mysqlに接続
 ```shell
-$ mysql -u root -p
+$ mysql -u docker -p
 ```
 
 * dockerコンテナの停止
