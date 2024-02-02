@@ -1,0 +1,185 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #1a2844;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.infotable {
+  width:100%;
+}
+th td{
+  border-collapse: collapse;
+  border:1px solid #ffffff;
+  border-spacing: 0px 10px ;
+}
+ 
+.infotable tbody td, 
+.infotable tfoot td {
+  text-align: center;
+}
+
+/* 上部ヘッダー（背景：パステルカラー） */
+.infotable th {
+  color: #FFF; 
+  font-weight: bold;
+  background:#00BCD4;
+}
+
+.infotable td {
+  border: 0 none !important;
+}
+
+/* １行ずつ色変更　不要なら削除 even:奇数行　odd:偶数行 */
+.infotable tr:nth-child(even) td { 
+  background: #f5f5f5; 
+} 
+.infotable tr:nth-child(odd) td {
+  background: #FDFDFD; 
+}
+
+/*（共通）　項目の多いテーブルの幅を調整*/
+@media (max-width: 767px) {
+  .col6t th,
+  .col6t td{
+    font-size:0.4em;
+    padding: 10px 0px;
+  }
+  .col5t th,
+  .col5t td{
+    font-size:0.5em;
+    padding: 10px 0px;
+  }
+  .col4t th,
+  .col4t td{
+    font-size:0.7em;
+    padding: 10px 5px;
+  }
+  .col3t th,
+  .col3t td{
+    font-size:0.8em;
+    padding: 10px 10px;
+  }
+}
+
+.tab-wrap {
+	background: White;
+	box-shadow: 0 0 5px rgba(0,0,0,.1);
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	padding: 0 0 20px;
+}
+
+.tab-label {
+	color: Gray;
+	cursor: pointer;
+	flex: 1;
+	font-weight: bold;
+	order: -1;
+	padding: 12px 24px;
+	position: relative;
+	text-align: center;
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s;
+	user-select: none;
+	white-space: nowrap;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.tab-label:hover {
+	background: rgba(0, 191, 255,.1);
+}
+
+.tab-switch:checked + .tab-label {
+	color: DeepSkyBlue;
+}
+
+.tab-label::after {
+	background: DeepSkyBlue;
+	bottom: 0;
+	content: '';
+	display: block;
+	height: 3px;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	transform: translateX(100%);
+	transition: cubic-bezier(0.4, 0, 0.2, 1) .2s 80ms;
+	width: 100%;
+	z-index: 1;
+}
+
+.tab-switch:checked ~ .tab-label::after {
+	transform: translateX(-100%);
+}
+
+.tab-switch:checked + .tab-label::after {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.tab-content {
+	height:0;
+	opacity:0;
+	padding: 0 20px;
+	pointer-events:none;
+	transform: translateX(-30%);
+	transition: transform .3s 80ms, opacity .3s 80ms;
+	width: 100%;
+}
+
+.tab-switch:checked ~ .tab-content {
+	transform: translateX(30%);
+}
+
+.tab-switch:checked + .tab-label + .tab-content {
+	height: auto;
+	opacity: 1;
+	order: 1;
+	pointer-events:auto;
+	transform: translateX(0);
+}
+
+.tab-wrap::after {
+	content: '';
+	height: 20px;
+	order: -1;
+	width: 100%;
+}
+
+.tab-switch {
+	display: none;
+}
