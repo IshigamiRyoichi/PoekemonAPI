@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import SearchPokemon from "./function/SearchPokemon";
+import SearchWaza from './function/SearchWaza';
+import MathDamage from './function/MathDamage';
 // import { useCallback, useEffect, useState } from "react";
 
 function App() {  
@@ -18,11 +20,11 @@ function App() {
             </div>
             <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">技検索機能</label>
             <div class="tab-content">
-              <SearchPokemon />
+              <SearchWaza />
             </div>
             <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">ダメージ計算機能</label>
             <div class="tab-content">
-              <SearchPokemon />
+              <MathDamage />
             </div>
         </div>
       </body>

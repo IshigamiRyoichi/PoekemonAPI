@@ -59,7 +59,7 @@ function CreateInfoTable(h, obj){
         info_table.appendChild(info_tr);
     }
     document.getElementById("data-table").appendChild(info_table);  
-    }  
+}  
 
 
 function CreateStatusTable(h, obj) {
@@ -140,7 +140,7 @@ function CreateStatusTable(h, obj) {
 }
 
 
-function CreateWazaTable(h, obj) {
+function CreateWazaLearnTable(h, obj) {
     // ステータス
     var waza_table = document.createElement("table");
     waza_table.className = "infotable";
@@ -339,7 +339,7 @@ function CreateWazaTable(h, obj) {
 
     var waza_table = document.createElement("table");
     waza_table.className = "infotable";
-    waza_table.id = "waza_table";
+    waza_table.id = "waza_learn_table";
     var waza_tr = document.createElement("tr");
     for (var c = 0; c < 7; c++){
         // カラム
@@ -472,7 +472,7 @@ function SearchPokemon() {
                 for (var h = 0; h < hit; h++){
                     CreateInfoTable(h, obj);
                     CreateStatusTable(h, obj);
-                    CreateWazaTable(h, obj);
+                    CreateWazaLearnTable(h, obj);
                 }
             });
         }

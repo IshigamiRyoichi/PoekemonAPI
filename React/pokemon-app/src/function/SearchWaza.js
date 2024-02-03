@@ -1,93 +1,203 @@
+import React, { useState } from "react";
+import { useTable } from "react-table";
+import axios from "axios";
+
+function delete_childElement(){
+    while(document.getElementById("waza-data-table").firstChild){
+        document.getElementById("waza-data-table").removeChild(document.getElementById("waza-data-table").firstChild);
+    }
+}
+
+function CreateWazaTable(h, obj) {
+    // ステータス
+    var waza_table = document.createElement("table");
+    waza_table.className = "infotable";
+    waza_table.id = "waza_table";
+    var waza_tr = document.createElement("tr");
+    for (var c = 0; c < 10; c++){
+        // カラム
+        if (c == 0){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "技名";
+            waza_tr.appendChild(waza_th);
+        }else if (c == 1){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "タイプ";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 2){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "分類";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 3){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "威力";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 4){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "命中";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 5){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "PP";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 6){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "直接攻撃か";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 7){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "守れるか";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 8){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "攻撃範囲";
+            waza_tr.appendChild(waza_th);
+        }
+        else if (c == 9){
+            var waza_th = document.createElement("th");
+            waza_th.textContent = "効果";
+            waza_tr.appendChild(waza_th);
+        }
+    }
+    waza_table.appendChild(waza_tr);
+    // var keyList = Object.keys(obj[h].覚える技.レベルアップで覚える技)
+    // for (var k in keyList){
+    var waza_tr = document.createElement("tr");
+    for (var c = 0; c < 10; c++){
+        // カラム
+        if (c == 0){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["技名"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 1){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["タイプ"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 2){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["分類"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 3){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["威力"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 4){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["命中"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 5){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["PP"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 6){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["直接攻撃か"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 7){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["守れるか"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 8){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["攻撃範囲"];
+            waza_tr.appendChild(waza_td);
+        }
+        else if (c == 7){
+            var waza_td = document.createElement("td");
+            waza_td.textContent = obj[h]["効果"];
+            waza_tr.appendChild(waza_td);
+        }
+        waza_table.appendChild(waza_tr);
+    }
+    document.getElementById("waza-data-table").appendChild(waza_table);
+
+}
+
 function SearchWaza() {  
-    const [pokemon_id, setpokemon_id] = useState("");
-    const [pokemon_name, setpokemon_name] = useState("");
-    const [pokemon_type1, setpokemon_type1] = useState("");
-    const [pokemon_type2, setpokemon_type2] = useState("");
+    const [waza_name, setwaza_name] = useState("");
+    const [waza_type, setwaza_type] = useState("");
+    const [waza_class, setwaza_class] = useState("");
     const [hit, setHit] = useState(1);
 
-    const handleSubmit = (e) => {
+    const handleWazaSubmit = (e) => {
         e.preventDefault();
         console.log("hoge");
-        var url = "http://localhost:8080/pokemon_serch/?";
-        if (pokemon_id != ""){
-            url += "pokemon_id=" + pokemon_id + "&";
+        var url = "http://localhost:8080/waza_serch/?";
+        if (waza_name != ""){
+            url += "waza_name=" + waza_name + "&";
         }
-        if (pokemon_name != ""){
-            url += "pokemon_name=" + pokemon_name + "&";
+        if (waza_type != ""){
+            url += "waza_type=" + waza_type + "&";
         }
-        if (pokemon_type1 != ""){
-            url += "type1=" + pokemon_type1 + "&";
-        }
-        if (pokemon_type2 != ""){
-            url += "type2=" + pokemon_type2 + "&";
+        if (waza_class != ""){
+            url += "waza_class=" + waza_class + "&";
         }
 
-        if (url != "localhost:8080/pokemon_serch/?"){
+        if (url != "localhost:8080/waza_serch/?"){
             axios.get(url).then((res) => {
                 const convert_json = JSON.stringify(res.data);
                 const obj = JSON.parse(convert_json);
                 console.log(obj);
                 console.log(obj.length);
                 delete_childElement();
-                setHit(1);
+                setHit(obj.length);
                 for (var h = 0; h < hit; h++){
-                    CreateInfoTable(h, obj);
-                    CreateStatusTable(h, obj);
                     CreateWazaTable(h, obj);
                 }
             });
         }
     };
 
-    const handlePokemonID = (e) => {
-        setpokemon_id(e.target.value);
+    const handleWazaName = (e) => {
+        setwaza_name(e.target.value);
     };
-    const handlePokemonName = (e) => {
-        setpokemon_name(e.target.value);
+    const handleWazaType = (e) => {
+        setwaza_type(e.target.value);
     };
-    const handlePokemonType1 = (e) => {
-        setpokemon_type1(e.target.value);
-    };
-    const handlePokemonType2 = (e) => {
-        setpokemon_type2(e.target.value);
+    const handleWazaClass = (e) => {
+        setwaza_class(e.target.value);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {/* <h2>pokemon_id:{pokemon_id}</h2>
-            <h2>pokemon_name:{pokemon_name}</h2>
-            <h2>pokemon_type1:{pokemon_type1}</h2>
-            <h2>pokemon_type2:{pokemon_type2}</h2> */}
+        <form onSubmit={handleWazaSubmit}>
             <input
-                value={pokemon_id}
-                onChange={handlePokemonID}
+                value={waza_name}
+                onChange={handleWazaName}
                 type="text"
-                placeholder="図鑑番号"
-            />
-            
-            <input
-                value={pokemon_name}
-                onChange={handlePokemonName}
-                type="text"
-                placeholder="ポケモンの名前"
+                placeholder="技の名前"
             />
 
             <input
-                value={pokemon_type1}
-                onChange={handlePokemonType1}
+                value={waza_type}
+                onChange={handleWazaType}
                 type="text"
-                placeholder="ポケモンのタイプ1"
+                placeholder="技のタイプ"
             />
 
             <input
-                value={pokemon_type2}
-                onChange={handlePokemonType2}
+                value={waza_class}
+                onChange={handleWazaClass}
                 type="text"
-                placeholder="ポケモンのタイプ2"
+                placeholder="技の種類"
             />
             <button type="submit">送信</button>
             <br />
-            <div id="data-table"></div>
+            <div id="waza-data-table"></div>
         </form>
     );
 }
