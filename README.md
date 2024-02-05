@@ -35,6 +35,13 @@ $ uvicorn main:app --reload
 
 * http://127.0.0.1:8080/docs にアクセス
 
+* Reactの実行(build時に自動実行される)
+```shell
+$ npm start
+```
+
+* http://127.0.0.1:3000 にアクセス
+
 ## mysql
 
 * dockerコンテナの起動
